@@ -116,8 +116,17 @@ compete on volume/price alone — compete on curation + setup + support.
 - [x] Brand, name, domain secured
 - [x] Storefront design + static homepage (`index.html`)
 - [x] Website in its own GitHub repo (`sotechxy`, public)
-- [ ] Publish live for free (GitHub Pages, since repo is public)
-- [ ] Connect the sotechxy.com domain to the live site
+- [x] Published live for free on GitHub Pages
+      LIVE URL: https://mlauradeveloper.github.io/sotechxy/
+- [~] Connect the sotechxy.com domain to the live site — DNS RECORDS ADDED,
+      waiting for propagation. Records set at Namecheap Advanced DNS:
+        A  @  185.199.108.153
+        A  @  185.199.109.153
+        A  @  185.199.110.153
+        A  @  185.199.111.153
+        CNAME  www  mlauradeveloper.github.io
+      GitHub custom domain set to: www.sotechxy.com
+      NEXT once GitHub shows green check: enable "Enforce HTTPS".
 - [ ] Wire the email signup to a real list (e.g. a free tier of an email tool)
 - [ ] Individual template detail pages
 - [ ] Payments + digital download delivery (via Stripe / Lemon Squeezy)
@@ -135,6 +144,35 @@ compete on volume/price alone — compete on curation + setup + support.
   money; this site doesn't need it yet).
 - Website lives in its OWN GitHub repo (`sotechxy`), separate from the
   templates studio.
+
+---
+
+## 8b. Data storage decision (how we store user data) — IMPORTANT
+
+Core principle: **store as little as possible ourselves, and let trusted
+specialist services hold anything sensitive.** We do NOT build or run our own
+database for user data. Running our own store of emails / names / payment info
+would make us responsible for securing it, backing it up, patching it, and
+complying with privacy law (GDPR etc.) — too much risk and work for a solo
+founder, and one mistake can leak customer data.
+
+Instead, each type of data lives in a service built and legally hardened for it:
+
+| Data type | Where it lives (NOT us) | Notes |
+|-----------|-------------------------|-------|
+| Email signups / newsletter | An email platform's free tier (e.g. MailerLite, Buttondown, ConvertKit) | They store the list, handle unsubscribes + privacy compliance, give us an embeddable form. |
+| Payments + customer/order info | Stripe or Lemon Squeezy | PCI-compliant. We NEVER see, type, or store a card number. Lemon Squeezy also handles sales tax/VAT as merchant of record. |
+| User accounts / logins (later) | Supabase, Auth0, or similar | They hash/store passwords securely. We never roll our own auth. |
+| The downloadable template packs | Private storage the checkout tool delivers from (e.g. Lemon Squeezy file delivery) | Buyer gets a secure, expiring download link after payment. |
+
+Rules that follow from this:
+- The website stays a static frontend. Data lives in the services above.
+- Never handle raw card numbers, ever. Payment always happens on the
+  provider's secure page/widget.
+- Collect only what we actually need (email to send updates; name + email +
+  order for a purchase). Less stored = less risk.
+- Whenever we add a data-collecting feature, add a short privacy note telling
+  users what we collect and why, and link a simple privacy policy.
 
 ---
 
