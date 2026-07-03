@@ -16,8 +16,8 @@ Legend: [x] done · [~] in progress · [ ] not started
 - [x] Storefront homepage designed and built (index.html)
 - [x] Website in its own GitHub repo (public)
 - [x] Published live for free on GitHub Pages
-- [~] Custom domain connected (DNS records added, propagating)
-- [ ] Enforce HTTPS (turn on once GitHub shows green DNS check) ← immediate next
+- [~] Custom domain connected (DNS check SUCCESSFUL; live at www.sotechxy.com)
+- [~] Enforce HTTPS (GitHub auto-issuing TLS cert; checkbox unlocks in up to ~24h) ← waiting on GitHub
 
 **Exit criteria:** sotechxy.com loads the site over https:// with a padlock.
 

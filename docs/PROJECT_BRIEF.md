@@ -119,14 +119,17 @@ compete on volume/price alone — compete on curation + setup + support.
 - [x] Published live for free on GitHub Pages
       LIVE URL: https://mlauradeveloper.github.io/sotechxy/
 - [~] Connect the sotechxy.com domain to the live site — DNS RECORDS ADDED,
-      waiting for propagation. Records set at Namecheap Advanced DNS:
+      DNS CHECK SUCCESSFUL on GitHub. Site live at http://www.sotechxy.com/
+      Records set at Namecheap Advanced DNS:
         A  @  185.199.108.153
         A  @  185.199.109.153
         A  @  185.199.110.153
         A  @  185.199.111.153
         CNAME  www  mlauradeveloper.github.io
       GitHub custom domain set to: www.sotechxy.com
-      NEXT once GitHub shows green check: enable "Enforce HTTPS".
+      REMAINING: enable "Enforce HTTPS" — GitHub is issuing the free TLS
+      certificate automatically (can take up to ~24h). The checkbox unlocks
+      once the certificate is ready. No action possible until then.
 - [ ] Wire the email signup to a real list (e.g. a free tier of an email tool)
 - [ ] Individual template detail pages
 - [ ] Payments + digital download delivery (via Stripe / Lemon Squeezy)
