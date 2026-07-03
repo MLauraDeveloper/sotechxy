@@ -179,13 +179,17 @@ Rules that follow from this:
 ## 9. How to resume in a new session
 
 Tell the assistant:
-"Read PROJECT_BRIEF.md in the sotechxy repo, then help me with [task].
+"Read docs/PROJECT_BRIEF.md in the sotechxy repo, then help me with [task].
 Work one step at a time, GUI-first, security-first, and give copy-paste-ready
 code."
 
+Documentation lives in the `docs/` folder:
+- `docs/PROJECT_BRIEF.md` (this file — the source of truth)
+- `docs/LAUNCH_ROADMAP.md` (idea → market-ready stages)
+
 The assistant has filesystem access to:
 - `/Users/mlaura/Documents/GitHub/sotechxy` (the live repo — edit here)
-- `/Users/mlaura/Desktop/sotechxy-website` (original copy)
+- `/Users/mlaura/Desktop/sotechxy-website` (original backup copy)
 
 ---
 
