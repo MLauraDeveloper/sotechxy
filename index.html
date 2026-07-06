@@ -70,6 +70,14 @@
   .card .free { font-family:var(--mono); font-size:12px; color:var(--green); }
   .card .cost { font-size:16px; font-weight:600; }
 
+  .faq { display:flex; flex-direction:column; gap:10px; }
+  .faq details { background:var(--panel); border:0.5px solid var(--border); border-radius:12px; padding:0 20px; }
+  .faq summary { cursor:pointer; padding:18px 0; font-size:15px; font-weight:600; list-style:none; display:flex; justify-content:space-between; align-items:center; }
+  .faq summary::-webkit-details-marker { display:none; }
+  .faq summary::after { content:"+"; color:var(--green); font-size:20px; font-weight:400; margin-left:16px; }
+  .faq details[open] summary::after { content:"\2212"; }
+  .faq details p { color:var(--muted); font-size:14px; line-height:1.6; padding:0 0 18px; margin:0; }
+
   .join { margin:72px 0 40px; border:0.5px solid var(--blue); border-radius:16px; padding:44px; background:#1b2530; }
   .join .sec-num { color:var(--blue); }
   .join h2 { font-size:26px; font-weight:600; letter-spacing:-0.02em; margin-bottom:8px; }
@@ -98,6 +106,7 @@
     <a href="#how">How it works</a>
     <a href="#plans">Pricing</a>
     <a href="#catalog">Catalog</a>
+    <a href="#faq">FAQ</a>
     <a href="#join">Blog</a>
     <button class="btn-green">Sign in</button>
   </div>
@@ -211,8 +220,39 @@
     </div>
   </section>
 
+  <section id="faq">
+    <div class="sec-num">04 — questions</div>
+    <div class="sec-title">Common questions</div>
+    <div class="faq">
+      <details>
+        <summary>Do I need to know how to code?</summary>
+        <p>No. Every template comes with a setup wizard that asks you plain-language questions and generates your steps for you. If you can fill in a form, you can set it up.</p>
+      </details>
+      <details>
+        <summary>What is n8n (and Make, Zapier)?</summary>
+        <p>They're tools that connect your apps and run tasks automatically — like "when a form is submitted, add a row to my sheet." You don't build them from scratch; our templates drop straight in, and most have free plans.</p>
+      </details>
+      <details>
+        <summary>What does "runs free" mean?</summary>
+        <p>It means the template fits inside the free tier of the tool it runs on, so you can use it without paying monthly fees. Where a template could cost money at high volume, we tell you exactly when and how much before you buy.</p>
+      </details>
+      <details>
+        <summary>What if it doesn't work for me?</summary>
+        <p>Every template is tested before it's listed, and setup help is included. If you hit a wall, reach out and we'll help you get it running.</p>
+      </details>
+      <details>
+        <summary>Can I get a refund?</summary>
+        <p>Yes. If a template doesn't work as described and we can't fix it with you, we'll refund your purchase. Full refund terms will be linked at checkout.</p>
+      </details>
+      <details>
+        <summary>What exactly do I download?</summary>
+        <p>A ready-to-run pack: the template file you import into your tool, a plain-language setup guide, and the wizard. No subscriptions to us — you own what you download.</p>
+      </details>
+    </div>
+  </section>
+
   <div class="join" id="join">
-    <div class="sec-num">04 — join</div>
+    <div class="sec-num">05 — join</div>
     <h2>Get new drops &amp; discounts</h2>
     <p>New templates, launch discounts, and the blog. No spam.</p>
     <div class="join-form">
