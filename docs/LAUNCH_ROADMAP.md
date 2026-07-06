@@ -27,7 +27,7 @@ Legend: [x] done · [~] in progress · [ ] not started
 
 A store people will pay at must feel real and safe before money is involved.
 
-- [ ] "How it works" section (3 simple steps: pick → follow wizard → done)
+- [x] "How it works" section (3 simple steps: pick → follow wizard → done)
 - [ ] Real template detail pages (what each does, what it costs to run, screenshots)
 - [ ] FAQ (refunds, support, "what is n8n?", "do I need to code?")
 - [ ] About / trust page (who's behind it, the guarantee)
