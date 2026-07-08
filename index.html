@@ -33,11 +33,15 @@
   .logo .p { color:var(--green); }
   .logo .s { color:var(--blue); }
   .navlinks { display:flex; gap:24px; align-items:center; font-size:14px; }
-  .navlinks a { color:var(--blue); transition:color .15s; }
+  .navlinks a { color:var(--blue); transition:color .2s; position:relative; }
+  .navlinks a::after { content:""; position:absolute; left:0; right:100%; bottom:-5px; height:2px; background:var(--green); border-radius:2px; transition:right .28s cubic-bezier(.2,.7,.2,1); }
   .navlinks a:hover { color:var(--text); }
-  .btn-green { background:var(--green); color:#1a1a1a; padding:9px 18px; border-radius:8px; font-weight:600; font-size:14px; border:none; cursor:pointer; transition:opacity .15s; }
-  .btn-green:hover { opacity:.88; }
-  .btn-ghost { background:transparent; color:var(--blue); border:0.5px solid var(--blue); padding:13px 26px; border-radius:10px; font-weight:500; font-size:14px; cursor:pointer; }
+  .navlinks a:hover::after, .navlinks a.active::after { right:0; }
+  .navlinks a.active { color:var(--text); }
+  .btn-green { background:var(--green); color:#1a1a1a; padding:9px 18px; border-radius:8px; font-weight:600; font-size:14px; border:none; cursor:pointer; transition:transform .25s cubic-bezier(.2,.7,.2,1), opacity .15s, box-shadow .25s; will-change:transform; }
+  .btn-green:hover { opacity:.92; box-shadow:0 8px 26px -8px rgba(0,255,156,.6); }
+  .btn-ghost { background:transparent; color:var(--blue); border:0.5px solid var(--blue); padding:13px 26px; border-radius:10px; font-weight:500; font-size:14px; cursor:pointer; transition:transform .25s cubic-bezier(.2,.7,.2,1), color .2s, border-color .2s; will-change:transform; }
+  .btn-ghost:hover { color:var(--text); border-color:var(--text); }
 
   .hero { padding:96px 0 72px; }
   .kicker { font-family:var(--mono); font-size:13px; color:var(--green); letter-spacing:0.05em; margin-bottom:22px; }
@@ -105,7 +109,47 @@
   footer { border-top:0.5px solid var(--border); padding:32px 0; text-align:center; color:var(--muted); font-size:13px; }
   footer .logo { font-size:15px; margin-bottom:8px; }
 
+  /* ---- how-it-works steps (was unstyled) ---- */
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .step { background:var(--panel); border:0.5px solid var(--border); border-radius:14px; padding:24px; }
+  .step-n { font-family:var(--mono); font-size:13px; color:var(--green); border:0.5px solid var(--green); width:32px; height:32px; display:flex; align-items:center; justify-content:center; border-radius:9px; margin-bottom:16px; }
+  .step h3 { font-size:16px; font-weight:600; margin-bottom:8px; }
+  .step p { font-size:13px; color:var(--muted); line-height:1.6; }
+
+  /* ---- interactive layer: cursor glow + stacking ---- */
+  #cursor-glow { position:fixed; top:0; left:0; width:340px; height:340px; border-radius:50%; pointer-events:none; z-index:0; opacity:0; transition:opacity .5s ease; background:radial-gradient(circle at center, rgba(0,255,156,0.14), rgba(0,255,156,0) 62%); }
+  .wrap, .stats, footer { position:relative; z-index:1; }
+
+  /* ---- scroll reveals (only active when JS is on, so no-JS never hides content) ---- */
+  .js .reveal, .js .reveal-group > * { opacity:0; transform:translateY(26px); transition:opacity .7s cubic-bezier(.16,.7,.3,1), transform .7s cubic-bezier(.16,.7,.3,1); }
+  .js .reveal.in, .js .reveal-group.in > * { opacity:1; transform:none; }
+  .reveal-group.in > *:nth-child(2) { transition-delay:.08s; }
+  .reveal-group.in > *:nth-child(3) { transition-delay:.16s; }
+  .reveal-group.in > *:nth-child(4) { transition-delay:.24s; }
+  .reveal-group.in > *:nth-child(5) { transition-delay:.32s; }
+
+  /* ---- hero entrance on load ---- */
+  @keyframes riseIn { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:none; } }
+  .hero .kicker { animation:riseIn .7s 0s both; }
+  .hero h1 .w { display:inline-block; animation:riseIn .8s both; }
+  .hero p { animation:riseIn .7s .5s both; }
+  .hero-btns { animation:riseIn .7s .62s both; }
+
+  /* ---- card lift + green glow (tilt driven by JS) ---- */
+  .card, .tier, .promise, .step { transition:transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease, border-color .3s ease; will-change:transform; }
+  .card:hover, .promise:hover, .step:hover { border-color:rgba(0,255,156,0.45); box-shadow:0 16px 46px -20px rgba(0,255,156,0.4); }
+  .tier:hover { box-shadow:0 16px 46px -20px rgba(0,255,156,0.4); }
+
+  /* ---- accessibility: honor reduced-motion ---- */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior:auto; }
+    .js .reveal, .js .reveal-group > * { opacity:1 !important; transform:none !important; transition:none !important; }
+    .hero .kicker, .hero h1 .w, .hero p, .hero-btns { animation:none !important; opacity:1 !important; transform:none !important; }
+    #cursor-glow { display:none !important; }
+  }
+
   @media (max-width:760px){
+    .steps { grid-template-columns:1fr; }
     .logo { font-size:24px; }
     nav .logo img { height:38px !important; }
     .hero h1 { font-size:40px; }
@@ -116,8 +160,11 @@
     .join-form { flex-direction:column; }
   }
 </style>
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
+
+<div id="cursor-glow" aria-hidden="true"></div>
 
 <nav>
   <div class="logo"><img src="logos/main-logo.png" alt="Sotechxy" style="height:48px; width:auto; vertical-align:middle; margin-right:10px;"> sotechxy</div>
@@ -135,7 +182,7 @@
 <div class="wrap">
   <div class="hero">
     <div class="kicker">// automation, packaged</div>
-    <h1>Ship automations<br>that <span class="accent">actually run.</span></h1>
+    <h1><span class="w" style="animation-delay:.08s">Ship</span> <span class="w" style="animation-delay:.16s">automations</span><br><span class="w" style="animation-delay:.24s">that</span> <span class="w accent" style="animation-delay:.32s">actually</span> <span class="w accent" style="animation-delay:.4s">run.</span></h1>
     <p>Battle-tested templates for n8n, Make and more. No blank canvas, no guesswork — just import, follow the wizard, done.</p>
     <div class="hero-btns">
       <button class="btn-green" style="padding:13px 26px;border-radius:10px;">Browse catalog →</button>
@@ -144,7 +191,7 @@
   </div>
 </div>
 
-<div class="stats">
+<div class="stats reveal">
   <div class="wrap" style="display:contents;">
     <div class="stat"><div class="num">3</div><div class="lbl">templates live</div></div>
     <div class="stat"><div class="num g">$0</div><div class="lbl">to run most</div></div>
@@ -155,7 +202,7 @@
 
 <div class="wrap">
 
-  <section id="how">
+  <section id="how" class="reveal-group">
     <div class="sec-num">01 — how it works</div>
     <div class="sec-title">Live in three steps</div>
     <div class="steps">
@@ -177,7 +224,7 @@
     </div>
   </section>
 
-  <section id="plans">
+  <section id="plans" class="reveal-group">
     <div class="sec-num">02 — plans</div>
     <div class="sec-title">Pick your level</div>
     <div class="tiers">
@@ -215,7 +262,7 @@
     </div>
   </section>
 
-  <section id="catalog">
+  <section id="catalog" class="reveal-group">
     <div class="sec-num">03 — catalog</div>
     <div class="sec-title">Popular templates</div>
     <div class="cards">
@@ -240,7 +287,7 @@
     </div>
   </section>
 
-  <section id="faq">
+  <section id="faq" class="reveal-group">
     <div class="sec-num">04 — questions</div>
     <div class="sec-title">Common questions</div>
     <div class="faq">
@@ -271,7 +318,7 @@
     </div>
   </section>
 
-  <section id="about">
+  <section id="about" class="reveal-group">
     <div class="sec-num">05 — about</div>
     <div class="sec-title">Why Sotechxy exists</div>
     <p class="about-lead">Automation shouldn't require a developer, a big budget, or a leap of faith. Sotechxy is built by one person who got tired of watching non-technical people struggle with blank canvases and surprise bills — so every template here is packaged to just work, priced honestly, and made simple enough for anyone to set up.</p>
@@ -294,7 +341,7 @@
     </div>
   </section>
 
-  <div class="join" id="join">
+  <div class="join reveal" id="join">
     <div class="sec-num">06 — join</div>
     <h2>Get new drops &amp; discounts</h2>
     <p>New templates, launch discounts, and the blog. No spam.</p>
@@ -315,6 +362,117 @@
     </div>
   </div>
 </footer>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasIO = 'IntersectionObserver' in window;
+
+  /* 1. Scroll reveals */
+  var reveals = document.querySelectorAll('.reveal, .reveal-group');
+  if (hasIO) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* 2. Count-up for the stats bar */
+  function animateCount(el) {
+    var raw = el.getAttribute('data-final') || el.textContent;
+    el.setAttribute('data-final', raw);
+    var m = raw.match(/^(\D*)(\d+)(\D*)$/);
+    if (!m) { return; }
+    var pre = m[1], target = parseInt(m[2], 10), suf = m[3];
+    if (reduce || target === 0) { el.textContent = raw; return; }
+    var dur = 1100, start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = pre + Math.round(target * eased) + suf;
+      if (p < 1) { requestAnimationFrame(step); } else { el.textContent = raw; }
+    }
+    requestAnimationFrame(step);
+  }
+  var statNums = document.querySelectorAll('.stat .num');
+  if (hasIO) {
+    var io2 = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { animateCount(e.target); io2.unobserve(e.target); }
+      });
+    }, { threshold: 0.6 });
+    statNums.forEach(function (el) { io2.observe(el); });
+  }
+
+  /* 3. Nav scroll-spy (active link) */
+  var links = [].slice.call(document.querySelectorAll('.navlinks a[href^="#"]'));
+  var map = {};
+  var targets = [];
+  links.forEach(function (l) {
+    var sec = document.querySelector(l.getAttribute('href'));
+    if (sec) { map[sec.id] = l; targets.push(sec); }
+  });
+  if (hasIO && targets.length) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          links.forEach(function (l) { l.classList.remove('active'); });
+          if (map[e.target.id]) { map[e.target.id].classList.add('active'); }
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    targets.forEach(function (s) { spy.observe(s); });
+  }
+
+  /* Pointer-driven effects: skip entirely for reduced-motion / touch */
+  if (reduce) { return; }
+
+  /* 4. Cursor glow (smoothed trailing) */
+  var glow = document.getElementById('cursor-glow');
+  if (glow) {
+    var gx = 0, gy = 0, cx = 0, cy = 0, on = false;
+    window.addEventListener('pointermove', function (ev) {
+      if (ev.pointerType === 'touch') { return; }
+      gx = ev.clientX; gy = ev.clientY;
+      if (!on) { on = true; glow.style.opacity = '1'; }
+    }, { passive: true });
+    (function loop() {
+      cx += (gx - cx) * 0.15; cy += (gy - cy) * 0.15;
+      glow.style.transform = 'translate(' + (cx - 170) + 'px,' + (cy - 170) + 'px)';
+      requestAnimationFrame(loop);
+    })();
+  }
+
+  /* 5. Magnetic buttons */
+  document.querySelectorAll('.btn-green, .btn-ghost').forEach(function (btn) {
+    btn.addEventListener('pointermove', function (ev) {
+      if (ev.pointerType === 'touch') { return; }
+      var r = btn.getBoundingClientRect();
+      var mx = ev.clientX - (r.left + r.width / 2);
+      var my = ev.clientY - (r.top + r.height / 2);
+      btn.style.transform = 'translate(' + (mx * 0.25) + 'px,' + (my * 0.35) + 'px)';
+    }, { passive: true });
+    btn.addEventListener('pointerleave', function () { btn.style.transform = ''; });
+  });
+
+  /* 6. 3D tilt on cards / tiers / promises / steps */
+  document.querySelectorAll('.card, .tier, .promise, .step').forEach(function (card) {
+    card.addEventListener('pointermove', function (ev) {
+      if (ev.pointerType === 'touch') { return; }
+      var r = card.getBoundingClientRect();
+      var px = (ev.clientX - r.left) / r.width - 0.5;
+      var py = (ev.clientY - r.top) / r.height - 0.5;
+      card.style.transform = 'perspective(700px) rotateX(' + (-py * 6) + 'deg) rotateY(' + (px * 6) + 'deg) translateY(-6px)';
+    }, { passive: true });
+    card.addEventListener('pointerleave', function () { card.style.transform = ''; });
+  });
+})();
+</script>
 
 </body>
 </html>
