@@ -1,1 +1,9 @@
 .DS_Store
+
+# Personal-use-only demo font — NOT licensed for commercial/public use. Never publish.
+fonts/Ballega-BL9EB.otf
+fonts/info.txt
+fonts/Read Me !!!.txt
+
+# Leftover static weights from the Outfit download — we self-host the single variable file instead.
+fonts/Outfit/
