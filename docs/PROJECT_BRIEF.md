@@ -127,16 +127,13 @@ compete on volume/price alone — compete on curation + setup + support.
 - [x] Custom GitHub Actions workflow (static.yml) so each deploy run is named
       after the commit message instead of the generic label.
 - [ ] STAGE 1 content: How it works [done], FAQ [done], About [done],
-      template detail pages, legal pages, support email, favicon/social preview
-      LEGAL PAGES IN PROGRESS: Privacy Policy being built in Termly (free tier),
-      account under business Gmail. ~85% through the questionnaire (paused at
-      "International Transfers" = Yes). Termly autosaves each step. To resume:
-      log into termly.io > Policies > Privacy Policy, continue the wizard.
-      Still TODO in legal: finish Privacy Policy, then create Terms & Conditions
-      and Return/Refund Policy (same Termly flow). Then paste all three into the
-      site as pages and link them in the footer.
-      Also pending (surfaced during legal setup): set up hello@sotechxy.com
-      support email, and add a contact method to the site.
+      Privacy Policy [done — self-hosted privacy.html, linked in footer,
+      reflects Termly answers, contact sotechcontrol@gmail.com],
+      still TODO: Terms & Conditions, Return/Refund Policy, template detail
+      pages, support email (hello@sotechxy.com), contact method, favicon/social preview
+      NOTE: Privacy Policy also exists in Termly (free tier) if we ever want to
+      regenerate. When payments go live (Stage 3), update privacy + add payment
+      provider disclosure.
 - [ ] Wire the email signup to a real list (e.g. a free tier of an email tool)
 - [ ] Individual template detail pages
 - [ ] Payments + digital download delivery (via Stripe / Lemon Squeezy)
