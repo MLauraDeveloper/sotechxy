@@ -84,11 +84,14 @@ compete on volume/price alone — compete on curation + setup + support.
 - Original copy also on Desktop: `/Users/mlaura/Desktop/sotechxy-website/index.html`
 - The GitHub repo folder (`/Users/mlaura/Documents/GitHub/sotechxy`) is the one
   that gets published. Edit there, then commit + push via GitHub Desktop.
-- Sections, in order: nav → hero → stats bar → 01 plans → 02 catalog →
-  03 join (email signup) → footer.
+- Sections, in order: nav → hero → stats bar → 01 how it works →
+  02 plans → 03 catalog → 04 questions (FAQ) → 05 about → 06 join
+  (email signup) → footer.
 - Fully responsive (mobile breakpoint at 760px).
 - Static only right now: buttons and the email form are visual — not yet wired
   to do anything. That's intentional for this stage.
+- Live at https://www.sotechxy.com (HTTPS enforced) and
+  https://mlauradeveloper.github.io/sotechxy/
 
 ---
 
@@ -118,18 +121,22 @@ compete on volume/price alone — compete on curation + setup + support.
 - [x] Website in its own GitHub repo (`sotechxy`, public)
 - [x] Published live for free on GitHub Pages
       LIVE URL: https://mlauradeveloper.github.io/sotechxy/
-- [~] Connect the sotechxy.com domain to the live site — DNS RECORDS ADDED,
-      DNS CHECK SUCCESSFUL on GitHub. Site live at http://www.sotechxy.com/
-      Records set at Namecheap Advanced DNS:
-        A  @  185.199.108.153
-        A  @  185.199.109.153
-        A  @  185.199.110.153
-        A  @  185.199.111.153
-        CNAME  www  mlauradeveloper.github.io
-      GitHub custom domain set to: www.sotechxy.com
-      REMAINING: enable "Enforce HTTPS" — GitHub is issuing the free TLS
-      certificate automatically (can take up to ~24h). The checkbox unlocks
-      once the certificate is ready. No action possible until then.
+- [x] Connect the sotechxy.com domain — LIVE at https://www.sotechxy.com
+      with HTTPS enforced (padlock on). DNS via Namecheap (4 A records +
+      www CNAME to mlauradeveloper.github.io).
+- [x] Custom GitHub Actions workflow (static.yml) so each deploy run is named
+      after the commit message instead of the generic label.
+- [ ] STAGE 1 content: How it works [done], FAQ [done], About [done],
+      template detail pages, legal pages, support email, favicon/social preview
+      LEGAL PAGES IN PROGRESS: Privacy Policy being built in Termly (free tier),
+      account under business Gmail. ~85% through the questionnaire (paused at
+      "International Transfers" = Yes). Termly autosaves each step. To resume:
+      log into termly.io > Policies > Privacy Policy, continue the wizard.
+      Still TODO in legal: finish Privacy Policy, then create Terms & Conditions
+      and Return/Refund Policy (same Termly flow). Then paste all three into the
+      site as pages and link them in the footer.
+      Also pending (surfaced during legal setup): set up hello@sotechxy.com
+      support email, and add a contact method to the site.
 - [ ] Wire the email signup to a real list (e.g. a free tier of an email tool)
 - [ ] Individual template detail pages
 - [ ] Payments + digital download delivery (via Stripe / Lemon Squeezy)
