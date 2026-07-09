@@ -117,7 +117,7 @@
   .step p { font-size:13px; color:var(--muted); line-height:1.6; }
 
   /* ---- interactive layer: cursor glow + stacking ---- */
-  #cursor-glow { position:fixed; top:0; left:0; width:340px; height:340px; border-radius:50%; pointer-events:none; z-index:0; opacity:0; transition:opacity .5s ease; background:radial-gradient(circle at center, rgba(0,255,156,0.14), rgba(0,255,156,0) 62%); }
+  #cursor-glow { position:fixed; top:0; left:0; width:170px; height:170px; border-radius:50%; pointer-events:none; z-index:0; opacity:0; transition:opacity .5s ease; background:radial-gradient(circle at center, rgba(0,255,156,0.16), rgba(0,255,156,0) 62%); }
   .wrap, .stats, footer { position:relative; z-index:1; }
 
   /* ---- scroll reveals (only active when JS is on, so no-JS never hides content) ---- */
@@ -167,7 +167,7 @@
 <div id="cursor-glow" aria-hidden="true"></div>
 
 <nav>
-  <div class="logo"><img src="logos/main-logo.png" alt="Sotechxy" style="height:48px; width:auto; vertical-align:middle; margin-right:10px;"> sotechxy</div>
+  <div class="logo"><img src="logos/main-logo.png" alt="Sotechxy" style="height:48px; width:auto; vertical-align:middle; margin-right:10px;"> Sotechxy</div>
   <div class="navlinks">
     <a href="#how">How it works</a>
     <a href="#plans">Pricing</a>
@@ -355,7 +355,7 @@
 
 <footer>
   <div class="wrap">
-    <div class="logo"><span class="p">&gt;_</span> sotechxy</div>
+    <div class="logo"><span class="p">&gt;_</span> Sotechxy</div>
     <div>© 2026 Sotechxy. Automations that actually run.</div>
     <div style="margin-top:10px; display:flex; gap:18px; justify-content:center; flex-wrap:wrap;">
       <a href="privacy.html" style="color:var(--blue); font-size:13px;">Privacy Policy</a>
@@ -443,7 +443,7 @@
     }, { passive: true });
     (function loop() {
       cx += (gx - cx) * 0.15; cy += (gy - cy) * 0.15;
-      glow.style.transform = 'translate(' + (cx - 170) + 'px,' + (cy - 170) + 'px)';
+      glow.style.transform = 'translate(' + (cx - 85) + 'px,' + (cy - 85) + 'px)';
       requestAnimationFrame(loop);
     })();
   }
