@@ -146,6 +146,27 @@ Add logins ONLY when a feature needs them (re-downloads, member discounts).
 
 ---
 
+## Product principle: prove it on Sotechxy first (dogfooding)
+
+Every automation we sell must first be built, run, and proven successful on
+Sotechxy's own operations before it enters the catalog. No template ships without
+real proof of utility from Sotechxy itself. We sell only what we actually use.
+
+**First template — the Content Machine.** Given only a topic to talk about, it
+produces SEO-strong, catchy content across every format:
+
+- Instagram / TikTok: static posts, carousels, reels, short videos
+- YouTube: videos
+- Blog posts
+- Newsletter issues
+
+We build and run this on Sotechxy's own channels first (Instagram, TikTok,
+YouTube, the blog, the Kit newsletter). Once it demonstrably drives results for
+us, it becomes the flagship template for sale. Every automation after it follows
+the same rule: proven on Sotechxy, then sold.
+
+---
+
 ## Cross-cutting rules (apply at every stage)
 
 - Store as little user data as possible; let specialists (email tool, Stripe/
