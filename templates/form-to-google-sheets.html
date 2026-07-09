@@ -77,6 +77,14 @@
   .reveal.in { opacity:1; transform:none; }
   @media (prefers-reduced-motion: reduce){ .reveal{opacity:1!important; transform:none!important; transition:none!important;} html{scroll-behavior:auto;} }
   @media (max-width:720px){ h1{font-size:34px;} .grid2{grid-template-columns:1fr;} .ctaband{flex-direction:column; align-items:flex-start;} }
+  .video-embed { position:relative; width:100%; aspect-ratio:16/9; background:var(--panel2); border:0.5px solid var(--border); border-radius:16px; overflow:hidden; }
+  .video-embed iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .video-ph { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; text-align:center; padding:20px; background:radial-gradient(circle at 50% 42%, rgba(0,255,156,.08), transparent 60%); }
+  .playbtn { width:74px; height:74px; border-radius:50%; background:var(--green); display:flex; align-items:center; justify-content:center; box-shadow:0 10px 40px -8px rgba(0,255,156,.5); transition:transform .25s cubic-bezier(.2,.7,.2,1); }
+  .video-embed:hover .playbtn { transform:scale(1.08); }
+  .playbtn svg { margin-left:4px; }
+  .video-ph-label { font-family:var(--display); font-size:18px; font-weight:600; }
+  .video-ph-sub { font-size:13px; color:var(--muted); max-width:340px; }
 </style>
 </head>
 <body>
@@ -126,15 +134,31 @@
 </svg></div>
   </section>
 
+  <section class="reveal">
+    <div class="sec-num">02 — watch it work</div>
+    <div class="sec-title">See it in action</div>
+    <div class="video-embed">
+      <!-- GO LIVE: delete the .video-ph block below and paste your video ID here:
+      <iframe src="https://www.youtube-nocookie.com/embed/YOUR_VIDEO_ID" title="Tutorial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      -->
+      <div class="video-ph">
+        <div class="playbtn" aria-hidden="true"><svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="#1a1a1a"/></svg></div>
+        <div class="video-ph-label">Tutorial coming soon</div>
+        <div class="video-ph-sub">A short walkthrough — from import to running — is on the way.</div>
+      </div>
+    </div>
+  </section>
+
+
   <section class="reveal prose">
-    <div class="sec-num">02 — what it does</div>
+    <div class="sec-num">03 — what it does</div>
     <div class="sec-title">A live spreadsheet that fills itself</div>
     <p>Connect any form — a signup, a lead capture, a survey, an order — and each submission is written as a new, correctly-mapped row in your Google Sheet the moment it arrives. No copy-paste, no exports.</p>
         <p>The wizard walks you through connecting your form and sheet and mapping the fields in plain language, then builds the workflow. No code and no fragile spreadsheet formulas.</p>
   </section>
 
   <section class="reveal">
-    <div class="sec-num">03 — costs &amp; contents</div>
+    <div class="sec-num">04 — costs &amp; contents</div>
     <div class="sec-title">What it costs &amp; what you get</div>
     <div class="grid2">
       <div class="panel">
@@ -160,7 +184,7 @@
   </section>
 
   <section class="reveal">
-    <div class="sec-num">04 — good for</div>
+    <div class="sec-num">05 — good for</div>
     <div class="sec-title">Great when you want to…</div>
     <div class="chips">
         <span class="chip">Collect leads into a sheet</span>
