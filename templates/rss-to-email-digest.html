@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RSS → email digest — Sotechxy template</title>
+<meta name="description" content="One clean daily email that summarizes any feed you follow — blogs, news, releases — on autopilot.">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta name="theme-color" content="#1a1a1a">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sotechxy">
+<meta property="og:url" content="https://www.sotechxy.com/templates/rss-to-email-digest.html">
+<meta property="og:title" content="RSS → email digest — Sotechxy template">
+<meta property="og:description" content="One clean daily email that summarizes any feed you follow — blogs, news, releases — on autopilot.">
+<meta property="og:image" content="https://www.sotechxy.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.sotechxy.com/og-image.png">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  @font-face { font-family:"Outfit"; src:url("../fonts/Outfit-VariableFont_wght.ttf") format("truetype"); font-weight:100 900; font-style:normal; font-display:swap; }
+  :root {
+    --bg:#1a1a1a; --panel:#212121; --panel2:#161616; --text:#f2f0e9; --muted:#8a8a8a;
+    --green:#00ff9c; --blue:#6A89A7; --border:#2e2e2e;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:"SF Mono",ui-monospace,"Cascadia Code",Menlo,Consolas,monospace;
+    --display:"Outfit",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--text); font-family:var(--font); line-height:1.6; -webkit-font-smoothing:antialiased; }
+  a { text-decoration:none; color:inherit; }
+  .wrap { max-width:920px; margin:0 auto; padding:0 24px; }
+  nav { display:flex; align-items:center; justify-content:space-between; padding:16px 24px; border-bottom:0.5px solid var(--border); position:sticky; top:0; background:rgba(26,26,26,0.9); backdrop-filter:blur(8px); z-index:50; }
+  .logo { font-family:var(--display); font-size:26px; font-weight:600; letter-spacing:-0.01em; display:flex; align-items:center; }
+  .logo img { height:40px; width:auto; margin-right:10px; }
+  .navlinks { display:flex; gap:22px; align-items:center; font-size:14px; }
+  .navlinks a { color:var(--blue); transition:color .2s; }
+  .navlinks a:hover { color:var(--text); }
+  .btn-green { background:var(--green); color:#1a1a1a; padding:13px 24px; border-radius:10px; font-weight:600; font-size:15px; border:none; cursor:pointer; display:inline-block; transition:transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s, opacity .15s; will-change:transform; }
+  .btn-green:hover { opacity:.94; box-shadow:0 8px 26px -8px rgba(0,255,156,.6); }
+  .back { font-family:var(--mono); font-size:13px; color:var(--blue); display:inline-block; margin:30px 0 0; }
+  .back:hover { color:var(--text); }
+  .kicker { font-family:var(--mono); font-size:13px; color:var(--green); letter-spacing:.05em; margin:26px 0 14px; }
+  .tag { font-family:var(--mono); font-size:11px; color:var(--blue); border:0.5px solid var(--blue); padding:3px 9px; border-radius:6px; }
+  h1 { font-family:var(--display); font-size:46px; line-height:1.05; font-weight:700; letter-spacing:-0.02em; margin:14px 0 16px; }
+  h1 .arrow { color:var(--green); }
+  .lead { font-size:18px; color:#9fb0c4; max-width:620px; margin-bottom:26px; }
+  .buybar { display:flex; align-items:center; gap:20px; flex-wrap:wrap; margin-bottom:8px; }
+  .price { font-family:var(--display); font-size:34px; font-weight:700; }
+  .free { font-family:var(--mono); font-size:12px; color:var(--green); border:0.5px solid rgba(0,255,156,.4); padding:4px 10px; border-radius:999px; }
+  .note { font-size:12px; color:var(--muted); margin-top:10px; }
+  section { padding:52px 0 0; }
+  .sec-num { font-family:var(--mono); font-size:13px; color:var(--blue); margin-bottom:8px; }
+  .sec-title { font-family:var(--display); font-size:26px; font-weight:600; letter-spacing:-0.02em; margin-bottom:20px; }
+  .flow { background:transparent; }
+  .flow svg { width:100%; height:auto; display:block; }
+  .prose p { font-size:16px; color:#c8c8c0; margin-bottom:14px; max-width:680px; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .panel { background:var(--panel); border:0.5px solid var(--border); border-radius:14px; padding:24px; transition:transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s, border-color .3s; will-change:transform; }
+  .panel:hover { border-color:rgba(0,255,156,.4); box-shadow:0 16px 46px -22px rgba(0,255,156,.4); }
+  .panel .pico { font-family:var(--mono); font-size:13px; color:var(--green); margin-bottom:12px; }
+  .panel h3 { font-size:17px; font-weight:600; margin-bottom:12px; }
+  .panel ul { list-style:none; font-size:14px; color:#c8c8c0; }
+  .panel li { padding:5px 0 5px 20px; position:relative; line-height:1.5; }
+  .panel li::before { content:"+"; color:var(--green); position:absolute; left:0; }
+  .chips { display:flex; flex-wrap:wrap; gap:10px; }
+  .chip { font-size:13px; color:#c8c8c0; background:var(--panel); border:0.5px solid var(--border); border-radius:999px; padding:8px 16px; }
+  .ctaband { margin:56px 0 20px; border:0.5px solid var(--green); border-radius:16px; padding:36px; background:#12211b; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+  .ctaband h2 { font-family:var(--display); font-size:22px; font-weight:700; margin-bottom:4px; }
+  .ctaband p { font-size:14px; color:#9fb0c4; }
+  footer { border-top:0.5px solid var(--border); padding:30px 0; text-align:center; color:var(--muted); font-size:13px; margin-top:40px; }
+  footer .logo { font-size:15px; justify-content:center; margin-bottom:8px; }
+  footer .p { color:var(--green); }
+  .reveal { opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.16,.7,.3,1), transform .7s cubic-bezier(.16,.7,.3,1); }
+  .reveal.in { opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1!important; transform:none!important; transition:none!important;} html{scroll-behavior:auto;} }
+  @media (max-width:720px){ h1{font-size:34px;} .grid2{grid-template-columns:1fr;} .ctaband{flex-direction:column; align-items:flex-start;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="../index.html"><img src="../logos/main-logo.png" alt="Sotechxy"> Sotechxy</a>
+  <div class="navlinks">
+    <a href="../index.html#catalog">Catalog</a>
+    <a href="../index.html#plans">Pricing</a>
+    <a href="../index.html#faq">FAQ</a>
+    <a href="../index.html">Home</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <a class="back" href="../index.html#catalog">← back to catalog</a>
+
+  <div class="kicker">// template</div>
+  <span class="tag">n8n</span>
+  <h1>RSS <span class="arrow">→</span> email digest</h1>
+  <p class="lead">One clean daily email that summarizes any feed you follow — blogs, news, releases — on autopilot.</p>
+  <div class="buybar">
+    <span class="price">$19</span>
+    <span class="free">runs free</span>
+    <a class="btn-green" href="#" aria-label="Get this template (checkout coming soon)">Get this template →</a>
+  </div>
+  <div class="note">Secure checkout &amp; instant download coming soon. One-time purchase, no subscription.</div>
+
+  <section class="reveal">
+    <div class="sec-num">01 — the flow</div>
+    <div class="sec-title">How it works</div>
+    <div class="flow"><svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Workflow diagram">
+<defs><marker id="ah" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#00ff9c"/></marker></defs>
+<rect x="1" y="1" width="718" height="198" rx="16" fill="#161616" stroke="#2e2e2e" stroke-width="1"/>
+<line x1="200" y1="100" x2="292" y2="100" stroke="#00ff9c" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="460" y1="100" x2="552" y2="100" stroke="#00ff9c" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="40" y="58" width="120" height="84" rx="12" fill="#212121" stroke="#6A89A7" stroke-width="1"/>
+<text x="100" y="98" text-anchor="middle" font-family="Outfit, sans-serif" font-size="17" font-weight="600" fill="#f2f0e9">RSS feed</text>
+<text x="100" y="119" text-anchor="middle" font-family="ui-monospace, monospace" font-size="11" fill="#8a8a8a">any source</text>
+<rect x="300" y="58" width="120" height="84" rx="12" fill="#212121" stroke="#00ff9c" stroke-width="1.6"/>
+<text x="360" y="98" text-anchor="middle" font-family="Outfit, sans-serif" font-size="17" font-weight="600" fill="#00ff9c">n8n</text>
+<text x="360" y="119" text-anchor="middle" font-family="ui-monospace, monospace" font-size="11" fill="#8a8a8a">collect + schedule</text>
+<rect x="560" y="58" width="120" height="84" rx="12" fill="#212121" stroke="#6A89A7" stroke-width="1"/>
+<text x="620" y="98" text-anchor="middle" font-family="Outfit, sans-serif" font-size="17" font-weight="600" fill="#f2f0e9">Email</text>
+<text x="620" y="119" text-anchor="middle" font-family="ui-monospace, monospace" font-size="11" fill="#8a8a8a">your inbox</text>
+</svg></div>
+  </section>
+
+  <section class="reveal prose">
+    <div class="sec-num">02 — what it does</div>
+    <div class="sec-title">Your reading, gathered and delivered on schedule</div>
+    <p>Give it the RSS feed of any blog, news site, podcast, or release page. On the schedule you pick, it gathers the newest items and sends you a single tidy digest email — instead of you checking ten sites a day.</p>
+        <p>The wizard lets you set the feeds, the send time, and how the email looks, then generates the workflow for you. No code, no cron jobs to figure out.</p>
+  </section>
+
+  <section class="reveal">
+    <div class="sec-num">03 — costs &amp; contents</div>
+    <div class="sec-title">What it costs &amp; what you get</div>
+    <div class="grid2">
+      <div class="panel">
+        <div class="pico">// runs free</div>
+        <h3>What it costs to run</h3>
+        <ul>
+          <li>Uses n8n's free scheduler and sends through a free email route (your own Gmail/SMTP within its normal free sending limits).</li>
+          <li>No paid services required for typical personal or small-team use.</li>
+          <li>Cost only appears if you send very high volumes and outgrow free email sending — the guide shows when, and the cheapest fix.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <div class="pico">// included</div>
+        <h3>What's in the pack</h3>
+        <ul>
+          <li>The ready-to-import workflow file (JSON)</li>
+          <li>The plain-language setup wizard</li>
+          <li>A step-by-step guide written for non-coders</li>
+          <li>You own what you download — no subscription to us</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="sec-num">04 — good for</div>
+    <div class="sec-title">Great when you want to…</div>
+    <div class="chips">
+        <span class="chip">Track competitor blogs</span>
+        <span class="chip">Get a morning news digest</span>
+        <span class="chip">Follow product release notes</span>
+        <span class="chip">Stop checking feeds all day</span>
+    </div>
+  </section>
+
+  <div class="ctaband reveal">
+    <div>
+      <h2>Get RSS → email digest</h2>
+      <p>Tested, documented, and priced honestly. Questions first? <a href="../index.html#faq" style="color:var(--green);">See the FAQ</a>.</p>
+    </div>
+    <a class="btn-green" href="#">Get this template — $19 →</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="logo"><span class="p">&gt;_</span> Sotechxy</div>
+    <div>© 2026 Sotechxy. Automations that actually run.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    els.forEach(function(el){io.observe(el);});
+  } else { els.forEach(function(el){el.classList.add('in');}); }
+  if(rm) return;
+  document.querySelectorAll('.panel, .btn-green').forEach(function(c){
+    c.addEventListener('pointermove',function(ev){ if(ev.pointerType==='touch')return; var r=c.getBoundingClientRect(); var px=(ev.clientX-r.left)/r.width-0.5, py=(ev.clientY-r.top)/r.height-0.5; c.style.transform='perspective(700px) rotateX('+(-py*5)+'deg) rotateY('+(px*5)+'deg) translateY(-4px)';},{passive:true});
+    c.addEventListener('pointerleave',function(){c.style.transform='';});
+  });
+})();
+</script>
+
+</body>
+</html>
