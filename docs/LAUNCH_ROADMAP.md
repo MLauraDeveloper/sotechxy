@@ -3,7 +3,7 @@
 > The full sequence to take Sotechxy from a live homepage to a robust, safe,
 > revenue-ready business. Ordered smart-first: each stage builds on the last,
 > and nothing paid or risky is added before it's needed.
-> Companion to PROJECT_BRIEF.md. Last updated: 2026-07-02.
+> Companion to PROJECT_BRIEF.md. Last updated: 2026-07-08.
 
 Legend: [x] done · [~] in progress · [ ] not started
 
@@ -16,10 +16,16 @@ Legend: [x] done · [~] in progress · [ ] not started
 - [x] Storefront homepage designed and built (index.html)
 - [x] Website in its own GitHub repo (public)
 - [x] Published live for free on GitHub Pages
-- [~] Custom domain connected (DNS check SUCCESSFUL; live at www.sotechxy.com)
-- [~] Enforce HTTPS (GitHub auto-issuing TLS cert; checkbox unlocks in up to ~24h) ← waiting on GitHub
+- [x] Custom domain connected (live at www.sotechxy.com)
+- [x] Enforce HTTPS (site serves over GitHub Pages TLS — confirm padlock in browser)
 
 **Exit criteria:** sotechxy.com loads the site over https:// with a padlock.
+
+> **Polish shipped 2026-07-08:** self-hosted Outfit font (OFL, commercial-safe) for
+> wordmark + H1; enlarged nav logo; interactive layer (scroll reveals, hero + stats
+> count-up, magnetic buttons, 3D card tilt, cursor glow, nav scroll-spy — all pure
+> CSS/JS, reduced-motion aware); brand name capitalized to "Sotechxy" everywhere;
+> hero buttons wired to sections; favicon + Apple icon + Open Graph/Twitter share card.
 
 ---
 
@@ -29,12 +35,14 @@ A store people will pay at must feel real and safe before money is involved.
 
 - [x] "How it works" section (3 simple steps: pick → follow wizard → done)
 - [ ] Real template detail pages (what each does, what it costs to run, screenshots)
-- [ ] FAQ (refunds, support, "what is n8n?", "do I need to code?")
-- [ ] About / trust page (who's behind it, the guarantee)
-- [ ] Legal basics: Privacy Policy, Terms of Service, Refund Policy
-      (generate with a reputable free tool; required before collecting data/payment)
+- [x] FAQ (refunds, support, "what is n8n?", "do I need to code?")
+- [x] About / trust page (who's behind it, the guarantee)
+- Legal basics (required before collecting data/payment):
+      - [x] Privacy Policy (live at privacy.html)
+      - [ ] Terms of Service
+      - [ ] Refund Policy
 - [ ] Contact method (a support email address on the domain, e.g. hello@sotechxy.com)
-- [ ] Favicon + social share preview (Open Graph image/title)
+- [x] Favicon + social share preview (favicon, Apple icon, Open Graph + Twitter card)
 
 **Exit criteria:** a stranger understands what they're buying, what it costs,
 who to contact, and their rights — without asking.
@@ -152,6 +160,10 @@ Add logins ONLY when a feature needs them (re-downloads, member discounts).
 
 ## Immediate next 3 actions (when you resume)
 
-1. Turn on **Enforce HTTPS** once GitHub shows the green DNS check (Stage 0).
-2. Add **legal pages + support email** (Stage 1) — needed before collecting data.
-3. Wire the **email signup** to a real list (Stage 2).
+Finishing Stage 1 — everything needed before money moves:
+
+1. **Template detail pages** — one page per template (what it does, real run-cost, screenshots).
+2. **Terms of Service + Refund Policy** — the two legal pages still open (Privacy is done).
+3. **Support email on the domain** — e.g. hello@sotechxy.com.
+
+Then Stage 2: wire the **email signup** to a real list (MailerLite / Buttondown).
