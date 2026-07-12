@@ -476,8 +476,9 @@
     })();
   }
 
-  /* 5. Magnetic buttons */
+  /* 5. Magnetic buttons (skip form submit buttons so they stay put and are easy to click) */
   document.querySelectorAll('.btn-green, .btn-ghost').forEach(function (btn) {
+    if (btn.closest('form')) { return; }
     btn.addEventListener('pointermove', function (ev) {
       if (ev.pointerType === 'touch') { return; }
       var r = btn.getBoundingClientRect();
